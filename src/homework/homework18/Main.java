@@ -13,13 +13,13 @@ public class Main {
         thread1.start();
         thread2.start();
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         System.out.println(testAtomic);
     }
 
     private static void decrement() {
         for (int i = 0; i < 10000; i++) {
-            testAtomic.decrementAndGet();
+            new Thread(() -> testAtomic.decrementAndGet()).start();
         }
     }
 }
